@@ -7,6 +7,7 @@ import java.util.List;
 
 public class BaseTypes {
 	
+	
 	private static List<String> readerIds = List.of("BASETYPE", "BOOL", "FLOAT", "STRICTFLOAT", 
 			                                        "ID", "INT", "NUMBER", "STRING");
 			
