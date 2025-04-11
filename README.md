@@ -10,5 +10,6 @@ It is actually used in two other projects:
 If you want to use any of those projects, first install nanoparse.
 
 ```
+git clone "https://gitlab.inria.fr/jfbaget/nanoparse.git"
 mvn clean compile
 ```
