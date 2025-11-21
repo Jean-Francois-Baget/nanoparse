@@ -32,7 +32,7 @@ Then add it as a dependency in your pom.xml:
 
 ```xml
 <dependency>
-  <groupId>fr.inria.boreal.jfbaget</groupId>
+  <groupId>fr.inria.jfbaget.jfbaget</groupId>
   <artifactId>nanoparse</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 </dependency>
@@ -46,10 +46,10 @@ Here's how to define and use a basic rule parser:
 import java.util.List;
 import java.util.Map;
 
-import fr.inria.boreal.jfbaget.nanoparse.Parser;
-import fr.inria.boreal.jfbaget.nanoparse.IMatch;
-import fr.inria.boreal.jfbaget.nanoparse.IReader;
-import fr.inria.boreal.jfbaget.nanoparse.readers.*;
+import fr.inria.jfbaget.jfbaget.nanoparse.Parser;
+import fr.inria.jfbaget.jfbaget.nanoparse.IMatch;
+import fr.inria.jfbaget.jfbaget.nanoparse.IReader;
+import fr.inria.jfbaget.jfbaget.nanoparse.readers.*;
 
 public class BRParser extends Parser {
 		
