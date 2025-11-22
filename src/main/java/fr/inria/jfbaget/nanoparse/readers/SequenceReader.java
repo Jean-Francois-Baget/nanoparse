@@ -81,9 +81,8 @@ public class SequenceReader extends AbstractReader{
     	case RETURN_ALL:
     		return new ListMatch(this, start, end, success, result);
     	case EXTRACT_ONE:
-    		IMatch newresult = result.get(this.singleReturn);
-    		newresult.setEnd(end);
-    		return newresult;
+    		IMatch inner = result.get(this.singleReturn);
+			return inner.copyWith(inner.start(), end, inner.success());
     	case EXTRACT_SOME: {
     		List<IMatch> newResult = new ArrayList<>();
     		for (int i = 0; i < this.manyReturns.size(); i++) {
