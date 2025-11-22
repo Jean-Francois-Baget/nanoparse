@@ -7,15 +7,14 @@
   <modelVersion>4.0.0</modelVersion>
 
   <!-- GAV -->
-  <groupId>io.github.jean-francois.baget</groupId>
+  <groupId>io.github.jean-francois-baget</groupId>
   <artifactId>nanoparse</artifactId>
   <version>0.1.0</version>
   <packaging>jar</packaging>
 
   <name>NanoParse</name>
   <description>A tiny parser-combinator-style library for Java.</description>
-  <!-- TODO: replace with your real project URL -->
-  <url>https://gitlab.inria.fr/jfbaget/nanoparse</url>
+  <url>https://github.com/Jean-Francois-Baget/nanoparse</url>
 
   <!-- License (change if you prefer MIT or something else) -->
   <licenses>
@@ -97,59 +96,81 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.3.0</version>
       </plugin>
-
-      <!-- Attach -sources.jar for Central -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>3.3.0</version>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <!-- Attach -javadoc.jar for Central -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.6.3</version>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <!--
-      TODO when you're ready to actually publish to Central:
-
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-gpg-plugin</artifactId>
-          <version>3.2.4</version>
-          <executions>
-              <execution>
-                  <id>sign-artifacts</id>
-                  <phase>verify</phase>
-                  <goals>
-                      <goal>sign</goal>
-                  </goals>
-              </execution>
-          </executions>
-      </plugin>
-
-      And a Nexus/Central publishing plugin (depending on whether you use
-      the new "Central Portal" flow or classic Sonatype OSSRH).
-      -->
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>release</id>
+
+      <build>
+        <plugins>
+          <!-- Attach -sources.jar for Central -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.3.0</version>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <!-- Attach -javadoc.jar for Central -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.6.3</version>
+            <configuration>
+              <!-- Turn off strict doclint errors (JDK8+) -->
+              <doclint>none</doclint>
+              <!-- Never fail the build because of javadoc issues -->
+              <failOnError>false</failOnError>
+            </configuration>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Sign all artifacts -->
+          <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>3.2.8</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <!-- Publish to Central Portal -->
+          <plugin>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
+            <version>0.9.0</version>
+            <extensions>true</extensions>
+            <configuration>
+              <publishingServerId>central</publishingServerId>
+              <!-- optional: publish automatically after validation -->
+              <!-- <autoPublish>true</autoPublish> -->
+            </configuration>
+          </plugin>
+
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
 </project>
