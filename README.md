@@ -34,19 +34,12 @@ Add it as a dependency in your pom.xml:
 
 ```xml
 <dependency>
-  <groupId>fr.inria.jfbaget</groupId>
+  <groupId>io.github.jean-francois-baget</groupId>
   <artifactId>nanoparse</artifactId>
   <version>0.1.0</version>
 </dependency>
 ``` 
 
-### If using Gradle (Groovy)
-
-```java
-dependencies {
-    implementation 'fr.inria.jfbaget:nanoparse:0.1.0'
-}
-```
 
 ---
 ## 🧪 Toy Example: Basic Rule Grammar

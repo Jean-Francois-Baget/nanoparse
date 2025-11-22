@@ -7,7 +7,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <!-- GAV -->
-  <groupId>fr.inria.jfbaget</groupId>
+  <groupId>io.github.jean-francois.baget</groupId>
   <artifactId>nanoparse</artifactId>
   <version>0.1.0</version>
   <packaging>jar</packaging>
@@ -28,9 +28,9 @@
 
   <!-- SCM info for Maven Central -->
   <scm>
-    <url>https://gitlab.inria.fr/jfbaget/nanoparse</url>
-    <connection>scm:git:https://gitlab.inria.fr/jfbaget/nanoparse.git</connection>
-    <developerConnection>scm:git:git@gitlab.inria.fr:jfbaget/nanoparse.git</developerConnection>
+    <url>https://github.com/Jean-Francois-Baget/nanoparse</url>
+    <connection>scm:git:git://github.com/Jean-Francois-Baget/nanoparse.git</connection>
+    <developerConnection>scm:git:ssh://github.com/Jean-Francois-Baget/nanoparse.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
