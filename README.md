@@ -13,30 +13,41 @@ It lets you define grammars directly in code and parse complex structures with m
 - Modular readers: regex, string, sequence, choice, repetition, optional, etc.
 - Fully navigable parse trees (`IMatch`)
 - Lightweight & fast — no unnecessary dependencies
-- Supports recursive and left-recursive grammars
-- Ready for integration with reasoning engines and domain-specific languages (e.g. DLGPE)
+- Supports recursive grammars
+- Ready for integration with reasoning engines and domain-specific languages
 
 ---
 
 ## 🚀 Installation
 
-Since this project is not yet available on Maven Central, you can build and install it locally:
+
+### Installation from gitlab repository
 
 ```bash
 git clone https://gitlab.inria.fr/jfbaget/nanoparse.git
 cd nanoparse
 mvn clean install
 ```
+### Getting it from Maven Central
 
-Then add it as a dependency in your pom.xml:
+Add it as a dependency in your pom.xml:
 
 ```xml
 <dependency>
-  <groupId>fr.inria.jfbaget.jfbaget</groupId>
+  <groupId>fr.inria.jfbaget</groupId>
   <artifactId>nanoparse</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.0</version>
 </dependency>
+``` 
+
+### If using Gradle (Groovy)
+
+```java
+dependencies {
+    implementation 'fr.inria.jfbaget:nanoparse:0.1.0'
+}
 ```
+
 ---
 ## 🧪 Toy Example: Basic Rule Grammar
 
@@ -46,10 +57,10 @@ Here's how to define and use a basic rule parser:
 import java.util.List;
 import java.util.Map;
 
-import fr.inria.jfbaget.jfbaget.nanoparse.Parser;
-import fr.inria.jfbaget.jfbaget.nanoparse.IMatch;
-import fr.inria.jfbaget.jfbaget.nanoparse.IReader;
-import fr.inria.jfbaget.jfbaget.nanoparse.readers.*;
+import fr.inria.jfbaget.nanoparse.Parser;
+import fr.inria.jfbaget.nanoparse.IMatch;
+import fr.inria.jfbaget.nanoparse.IReader;
+import fr.inria.jfbaget.nanoparse.readers.*;
 
 public class BRParser extends Parser {
 		
@@ -74,16 +85,25 @@ public class BRParser extends Parser {
 		BRParser parser =  new BRParser();
 		String input = "a :- b, c, d, e.";
 		IMatch match = parser.read(input, 0);
-		System.out.println(match.success());
+		System.out.println(match.toJSON());
 	}
 }
 ```
+In the above code, the `IMatch` structure can be traversed to gather the data needed. The printed
+JSON display is there for debugging and informational purpose only.
 
-🤝 Contributions
+## Requirements
+* Java 17+ (compiled with `--release 17`).
+* `org.json` is used for optional JSON output of matches (`IMatch.toJSON()`).
+
+
+## 🤝 Contributions
+
 This library is being developed as part of ongoing research at Inria and may later evolve into a more widely distributed module.
 
 Pull requests and feedback are welcome — especially if you have grammars or DSLs you’d like to build with it.
 
-📜 License
+## 📜 License
+
 🄯 2025 Jean-François Baget, Inria
-Licensed under the CECILL license (if you choose to add one later).
+Licensed under the Apache 2 license.
