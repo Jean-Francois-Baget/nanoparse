@@ -98,10 +98,10 @@
       </plugin>
     </plugins>
   </build>
+
   <profiles>
     <profile>
       <id>release</id>
-
       <build>
         <plugins>
           <!-- Attach -sources.jar for Central -->

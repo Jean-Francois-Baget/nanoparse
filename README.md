@@ -40,6 +40,11 @@ Add it as a dependency in your pom.xml:
 </dependency>
 ``` 
 
+## Javadoc
+
+Can be found on https://javadoc.io/doc/io.github.jean-francois-baget/nanoparse/latest/index.html
+
+
 
 ---
 ## 🧪 Toy Example: Basic Rule Grammar
